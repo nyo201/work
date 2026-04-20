@@ -7,19 +7,27 @@ def get_numbers():
 
 
 def calculate_average(numbers):
-    total = 0
-    for n in numbers:
-        total += n   # ❌ cannot add string to int
-    return total / len(numbers)
+    if not numbers:
+        raise ValueError("List is empty")
 
+    total = 0
+    count = 0
+
+    for n in numbers:
+        total += float(n)  # convert to number
+        count += 1
+
+    return total / count
 
 def find_largest(numbers):
-    largest = 0   # ❌ fails if all numbers are negative
+    if not numbers:
+        raise ValueError("List is empty")
+    
+    largest = numbers[0]
     for n in numbers:
         if n > largest:
             largest = n
     return largest
-
 
 def count_even(numbers):
     count = 0
